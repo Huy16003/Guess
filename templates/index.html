@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Dự Đoán</title>
+</head>
+<body>
+    <h2>Nhập Dữ Liệu Huấn Luyện</h2>
+    <form action="/add" method="post">
+        <label for="result">Nhập kết quả (0 hoặc 1):</label>
+        <input type="number" id="result" name="result" min="0" max="1" required>
+        <button type="submit">Thêm Dữ Liệu</button>
+    </form>
+
+    <h2>Chức năng</h2>
+    <a href="/train"><button>Huấn Luyện Mô Hình</button></a>
+    <a href="/predict"><button>Dự Đoán Kết Quả</button></a>
+
+    <h2>Dữ Liệu Huấn Luyện (10 dòng gần nhất)</h2>
+    <table border="1">
+        <tr>
+            <th>Feature1</th>
+            <th>Feature2</th>
+            <th>Kết Quả</th>
+            <th>Thời Gian Nhập</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.feature1 }}</td>
+            <td>{{ row.feature2 }}</td>
+            <td>{{ row.result }}</td>
+            <td>{{ row.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
